@@ -1,4 +1,4 @@
-# web dashboard server
+# telegram-bot dashboard server
 
 ## Project structure
 
