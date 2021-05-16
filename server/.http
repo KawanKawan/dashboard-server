@@ -1,0 +1,42 @@
+# Global file variable definitions
+@hostname = http://localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@firebaseAuthApiKey = AIzaSyDBOPTlkjhImBuw78lAzyd2bjazdr0Lo6U
+
+@authHeader = Authorization: Bearer {{getAuth.response.body.idToken}}
+
+### Although users can only use phone auth from the frontend, email/password auth method is enabled for testing locally.
+### Create api_tester account if none
+# @name signUp
+POST https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={{firebaseAuthApiKey}}
+content-type: application/json
+
+{
+    "email": "api_tester@enkeldigital.com",
+    "password": "securePassword",
+    "returnSecureToken": true,
+}
+
+
+### Get auth credentials
+# @name getAuth
+POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={{firebaseAuthApiKey}}
+content-type: application/json
+
+{
+    "email": "api_tester@enkeldigital.com",
+    "password": "securePassword",
+    "returnSecureToken": true,
+}
+
+### ping
+GET {{host}}/
+
+### Health probe
+GET {{host}}/health
+
+### Search userid
+# GET /user/:userid
+GET {{host}}/user/1078844444
+
