@@ -40,3 +40,15 @@ GET {{host}}/health
 # GET /user/:userid
 GET {{host}}/user/1078844444
 
+### update user
+# POST /user/update
+POST {{host}}/user/update
+content-type: application/json
+
+{
+    "userID":"1078844444",
+    "name":"zzk",
+    "phone":99999999,
+    "payment": "CASH"
+}
+
