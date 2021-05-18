@@ -14,11 +14,9 @@ async function getUserProfile(id) {
 
   const doc = await docRef.get();
 
-  // Check if this number has been reported before
-  // If doc no exists means first time being reported, so create the doc plus a reported value of 1
   if (!doc.exists) logger.warn("No such document");
   else {
-    logger.info("user data:" + doc.data().Name);
+    logger.info("user data:" + doc.data().name);
     return doc.data();
   }
 }
@@ -63,7 +61,7 @@ router.get("/:userID", async (req, res) => {
 /**
  * Edit a user's profile
  * @name POST /user/update
- * @param {number} userID
+ * @param {String} userID
  * @param {String} name user's name
  * @param {number} phone user's phone number
  * @param {String} payment_method user's preferred payment method
@@ -72,7 +70,6 @@ router.get("/:userID", async (req, res) => {
 router.post("/update", express.json(), async (req, res) => {
   try {
     const { userID, name, phone, payment } = req.body;
-    console.log(">>");
     res.status(200).json({
       success: true,
       user: await updateUserProfile(userID, name, phone, payment),
