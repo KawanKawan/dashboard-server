@@ -56,3 +56,56 @@ content-type: application/json
 # GET /user/:userid
 GET {{host}}/payment/1078844444
 
+
+### add payment
+# POST /payment/add
+POST {{host}}/payment/add
+content-type: application/json
+
+{
+    "id":"test_payload",
+    "request_from":"321",
+    "amount":12345,
+    "completed":false,
+    "eventid":"10",
+    "payload":"test_payload"
+}
+
+### update payment
+# POST /payment/update
+POST {{host}}/payment/update
+content-type: application/json
+
+{
+    "id":"test_payload",
+    "request_from":"321",
+    "amount":99,
+    "completed":false,
+    "eventid":"10"
+}
+
+### update payment
+# POST /payment/update/:payload
+POST {{host}}/payment/update/test_payload
+content-type: application/json
+
+{
+    "request_from":"321",
+    "amount":1234500,
+    "completed":false
+}
+
+### delete payment 
+# POST /payment/delete
+POST {{host}}/payment/delete
+content-type: application/json
+
+{
+    "id":"test_payload",
+    "request_from":"321",
+    "eventid":"10"
+}
+
+### delete payment by payload
+# GET /user/delete/:payload
+GET {{host}}/payment/delete/test_payload
