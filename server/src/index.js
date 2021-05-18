@@ -45,6 +45,7 @@ global.logger = logger;
 app.use("/", require("./routes/default"));
 app.use("/user", require("./routes/user"));
 app.use("/payment", require("./routes/payment"));
+app.use("/event", require("./routes/event"));
 
 // Mount the 404 and 500 error handling middleware last
 const { _404, _500 } = require("express-error-middlewares");

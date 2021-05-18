@@ -107,5 +107,35 @@ content-type: application/json
 }
 
 ### delete payment by payload
-# GET /user/delete/:payload
+# GET /payment/delete/:payload
 GET {{host}}/payment/delete/test_payload
+
+### Get event by eventid
+# GET /event/:eventid
+GET {{host}}/event/test_event_2021
+
+### add event
+# POST /event/add
+POST {{host}}/event/add
+content-type: application/json
+
+{
+    "eventid":"test_event_2021",
+    "startdate":"2021-05-06",
+    "title":"movie night"
+}
+
+### update event
+# POST /event/update
+POST {{host}}/event/update
+content-type: application/json
+
+{
+    "eventid":"test_event_2021",
+    "startdate":"2021-05-07",
+    "title":"movie night"
+}
+
+### delete event and payment related to this event
+# GET /event/delete/:eventid
+GET {{host}}/event/delete/test_event_2021

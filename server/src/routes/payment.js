@@ -1,8 +1,8 @@
 /**
  * Express Router for payment information
- * Mounted on /report
+ * Mounted on /payment
  * @author zikang
- * @module Report routes
+ * @module Payment routes
  */
 
 const express = require("express");
@@ -109,7 +109,7 @@ router.get("/:userID", async (req, res) => {
 
 /**
  * add a user's payment information
- * @name POST /payment/update
+ * @name POST /payment/add
  * @param {String} userID
  * @param {String} request_from userID of the person who owe current money
  * @param {number} amount payment amount
