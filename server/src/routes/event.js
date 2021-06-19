@@ -77,14 +77,14 @@ router.get("/:eventID", async (req, res) => {
  */
 router.post("/add", express.json(), async (req, res) => {
   try {
-    const { eventid, startdate, title } = req.body;
+    const { eventid, startdate, title, userid } = req.body;
     const date = new Date(startdate);
     res.status(200).json({
       success: true,
       event: await fs
         .collection("event")
         .doc(eventid)
-        .set({ eventid, date, title }),
+        .set({ eventid, date, title, userid }),
     });
   } catch (error) {
     logger.error(error);

@@ -116,7 +116,6 @@ router.get("/:userID", async (req, res) => {
  * @param {boolean} completed the status of payment
  * @param {String} eventid the event ID related to the payment
  * @param {String} payload unique token of the payment
- * @TODO payload and key can be same?
  * @returns {object} success indicator
  */
 router.post("/add", express.json(), async (req, res) => {
@@ -144,7 +143,6 @@ router.post("/add", express.json(), async (req, res) => {
  * @param {boolean} completed the status of payment
  * @param {String} eventid the event ID related to the payment
  * @param {String} payload unique token of the payment
- * @TODO payload and key can be same?
  * @returns {object} success indicator
  */
 router.post("/update", express.json(), async (req, res) => {

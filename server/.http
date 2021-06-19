@@ -63,12 +63,12 @@ POST {{host}}/payment/add
 content-type: application/json
 
 {
-    "id":"test_payload",
-    "request_from":"321",
+    "id":1078844444,
+    "request_from":1078844444,
     "amount":12345,
     "completed":false,
-    "eventid":"10",
-    "payload":"test_payload"
+    "eventid":"test_event2",
+    "payload":"test_payload7"
 }
 
 ### update payment
@@ -120,9 +120,10 @@ POST {{host}}/event/add
 content-type: application/json
 
 {
-    "eventid":"test_event_2021",
+    "eventid":"test_event",
     "startdate":"2021-05-06",
-    "title":"movie night"
+    "title":"movie night",
+    "userid":1078844444
 }
 
 ### update event
@@ -131,9 +132,10 @@ POST {{host}}/event/update
 content-type: application/json
 
 {
-    "eventid":"test_event_2021",
+    "eventid":"test_event",
     "startdate":"2021-05-07",
-    "title":"movie night"
+    "title":"movie night",
+    "userid":1078844444
 }
 
 ### delete event and payment related to this event
