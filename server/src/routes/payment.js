@@ -13,7 +13,7 @@ async function getPayment(id) {
   var payements = [];
   await fs
     .collection("payment")
-    .where("id", "==", id)
+    .where("id", "==", parseInt(id))
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {

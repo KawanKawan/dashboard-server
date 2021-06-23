@@ -71,7 +71,7 @@ content-type: application/json
     "payload":"test_payload7"
 }
 
-### update payment
+### update payment according to userid, payee id and eventid
 # POST /payment/update
 POST {{host}}/payment/update
 content-type: application/json
@@ -81,10 +81,10 @@ content-type: application/json
     "request_from":"321",
     "amount":99,
     "completed":false,
-    "eventid":"10"
+    "eventid":"test_event"
 }
 
-### update payment
+### update payment according to payload
 # POST /payment/update/:payload
 POST {{host}}/payment/update/test_payload
 content-type: application/json
@@ -95,7 +95,7 @@ content-type: application/json
     "completed":false
 }
 
-### delete payment 
+### delete payment according to userid, payee id and eventid
 # POST /payment/delete
 POST {{host}}/payment/delete
 content-type: application/json
