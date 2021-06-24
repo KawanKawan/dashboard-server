@@ -28,6 +28,25 @@ async function getPayment(id) {
   return payements;
 }
 
+async function getPaymentToReceive(id) {
+  var payements = [];
+  await fs
+    .collection("payment")
+    .where("request_from", "==", parseInt(id))
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        payements.push(doc.data());
+      });
+    })
+    .catch((error) => {
+      logger.log("Error getting documents: ", error);
+    });
+
+  return payements;
+}
+
 async function updatePayment(id, request_from, amount, completed, eventid) {
   await fs
     .collection("payment")
@@ -91,7 +110,7 @@ async function deletePayment(id, request_from, eventid) {
 
 /**
  * Get a user's all payment
- * @name GET /user/:userID
+ * @name GET /payment/:userID
  * @returns Sucess indicator
  */
 router.get("/:userID", async (req, res) => {
@@ -100,7 +119,12 @@ router.get("/:userID", async (req, res) => {
 
     res
       .status(200)
-      .json({ success: true, user: userID, payment: await getPayment(userID) });
+      .json({
+        success: true,
+        user: userID,
+        payment: await getPayment(userID),
+        paymentToReceive: await getPaymentToReceive(userID),
+      });
   } catch (error) {
     logger.error(error);
     res.status(500).json({ success: false, error: error.message });
